@@ -1,0 +1,18 @@
+%!TEX root = ./main.tex
+
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <http://www.media.informatik.rwth-aachen.de/karrer.html>.
+
+\loadgeometry{myAbstract}
+
+\chapter*{Abstract\markboth{Abstract}{Abstract}}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Abstract}
+\label{abstract}
+
+Die BioLector Technologie wird am Lehrstuhl für Bioverfahrenstechnik seit 2005 eingesetzt. Die Messtechnik erlaubt es, Fluoreszenz und Streulicht in einer Kombination von Emissions- und Exzitationswellenlängen in einer Mikrotiterplatte zu messen \citep{doi:10.1002/bit.20573}. In dem ursprünglichen BioLector Aufbau kommt für die Messung eine Kombination eines Spektrografen und einem Detektor zum Einsatz. Für diesen Aufbau wurde im Jahr 2016 eine externe Software entwickelt, die eine robuste Messung erlaubt. Im gleichen Jahr wurde unabhängig davon eine Modifikation veröffentlicht, die es ermöglicht, zweidimensionale Fluoreszenzspektren aufzunehmen \citep{doi:10.1002/biot.201600515}. Durch den Einbau einer CCD Kamera können so für die Emissionswellenlänge alle Wellenlängen des sichtbaren Lichtes detektiert werden. Je länger die Integrationszeit ist, desto höher ist die aufgenommene Intensität des Streulichtes und der Fluoreszenz. Doch es ist empfehlenswert, keine sehr hohen Intensitäten aufzunehmen, um die CCD Kamera zu schonen. Das heißt, zur Erkennung geringkonzentrierter Fluorophore soll das Streulicht, dass eine deutlich höhere Intensität zeigt, zunächst ausgeblendet werden. Danach kann ebenfalls die Integrationszeit verlängert werden. Dafür wird statt dem feststehenden Brechungsgitter ein bewegliches Gitter im Emissionsmonochromator eingebaut, der das zurückgeworfene Licht auf die Kamera auftrennt und dadurch auswählen kann, welche Wellenlängen aufgenommen werden. Dieser neue Messstand erfordert eine entsprechende neue Software.
+
+Ziel dieser Studienarbeit ist die Analyse zur Umsetzung einer Integration des neuen Messtandes inklusive beweglichem Gitter im Emissionsmonochromator in die vorhandene, extern geschriebene Software. Dafür werden zunächst das Messprinzip des konventionellen sowie des 2D-BioLectors vorgestellt. Anschließend werden zentrale Abläufe der vorhandenen in LabVIEW geschriebenen Software für den konventionellen BioLector und sowie für den zu integrierenden Messstand beschrieben. Dazu gehören die Software-Struktur, die eingesetzten Module und ebenfalls der Ablauf des Messverfahrens. Danach werden die Unterschiede der Anlagen ausgearbeitet und mögliche Schritte zur Integration vorgestellt. Abschließend soll der Aufwand zur Integration der Software abgeschätzt werden. Hierbei soll vor allem auf die Übertragbarkeit der eingesetzten \textit{Producer Consumer} Strukturen, sowie das Verhindern von \textit{Race Conditions} auf den neuen Messstand eingegangen werden. Da dieser zudem eine vielfach höhere Menge an Daten produziert, soll ebenfalls eine geeignete Lösung zur Datenspeicherung vorgestellt werden.
+
+\loadgeometry{myText}

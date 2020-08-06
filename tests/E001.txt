@@ -1,0 +1,11 @@
+% Alle möglichen Kommentare werden richtig gefiltert
+10, 10, 10, 10, 10, 10, 10
+10, s, 10, 10, 10, 10, 10 % line comment here
+10, 2, 1, 10, 10, 10%, 10  <-- excluding this last block
+%* block comments are allowed here
+*  no worries
+*  this should work fine
+*%10, 10, 1, 10, 10, 10, 10
+10,%*%tricky comment*% 2, 1, 2, 1, z, 10
+10, 10, 10, 10, 10, 10, 10
+10, 10, 10, 10, 10, 10, 10

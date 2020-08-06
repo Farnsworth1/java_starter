@@ -1,0 +1,72 @@
+%!TEX root = ./main.tex
+%
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <https://hci.rwth-aachen.de/karrer_thesistemplate>.
+
+\chapter{Verfahrensbeschreibung}
+
+In diesem Abschnitt folgt eine genaure Untersuchung der im Programm enthaltenen Funktionalitäten. 
+
+Das Programm hat zwei elementare Funktionalitäten. Die Suche nach Wortvorschläge im Wörterbuch anhand einer einfachen Ziffernfolge sowie die Filterung und die Interpretation von Eingaben von Expliziten Ziffernfolgen.
+\section{Die Suche im normalen Modus der Texteingabe}
+\label{Suche}
+
+Für eine effiziente Suche im Wörterbuch wird eine Datenstruktur eines Baumes verwendet. Für jede Ziffer in der expliziten Ziffernfolge eines Wortes wird einen Knotenpunkt im Baum erstellt. Dies vereinfacht die Suche erheblich im Vergleich mit der Datenstruktur einer Tabelle. 
+Ein Beispielbaum mit folgenden gespeicherten Wörtern
+\{ZNRF, WORF, ZO, Z, Y, A\}
+
+\begin{tikzpicture}[->,>=stealth',level/.style={sibling distance = 5cm/#1,
+  level distance = 1.5cm}] 
+\node [arn_x] {}
+    child{ node [arn_n] {9}
+        child{ node [arn_r] {1} 
+                child{ node [arn_n] {6} 
+                	child{ node [arn_r] {3}
+                	    child{ node [arn_n] {7}
+                	        child{ node [arn_r] {3}
+                	            child{ node [arn_n] {3}
+                	                child{ node [arn_r] {3}
+                	                }
+                	            }
+                	        }
+                	    }
+                	}
+                }                            
+        }
+        child{ node [arn_r] {3}}
+    	child{ node [arn_r] {4} 
+                child{ node [arn_n] {6} 
+                	child{ node [arn_r] {2}
+                	    child{ node [arn_n] {3}}
+                	    child{ node [arn_n] {7}
+                	        child{ node [arn_r] {3}
+                	            child{ node [arn_n] {3}
+                	                child{ node [arn_r] {3}
+                	                }
+                	            }
+                	        }
+                	    }
+                	}
+                }                            
+        }
+    }
+    child{ node [arn_n] {2}
+        child{ node [arn_r] {1}}
+    }
+; 
+\end{tikzpicture}
+
+Die Knotenpunkte im Baum Bilden die Menge der expliziten Ziffernfolgen eineindeutig ab. Alle Knoten mit der Endziffer eines Wortes enthält die Häufigkeit des Wortes als integer Zahl gespeichert.
+Schwarze und rote Knoten im Baum sind identisch.
+Bei der Suche im Baum werden alle schwarzen Knoten besucht, die einen identischen Index mit der vorligenden Ziffer haben. Die roten Knoten werden für die Identifikation des Wortes benötigt. Deswegen werden die roten Knoten direkt unterhalb eines besuchten schwarzen Knoten immer besucht. Die roten Knoten sind die Endziffer eines Wortes. Aus diesem Grund sind die Häufigkeiten (n) in diesem Knoten als Integerzahl gespeichert. Alle anderen Knoten haben die Häufigkeit (n=0).
+
+Die Suche im Baum erfolgt nach dem Prinzip von Sammelkorb. Alle Endknoten der gefundenen Wörter werden gesammelt und anschließend ihre Häufigkeiten verglichen. Der Knotenpunkt mit max(n) wird zurückgegben.
+Um aus diesem Knoten ein Wort zu bilden, durchläuft das Programm die Knoten rückwärts bis zum Wurzel und speichert dabei die Indexen der Knoten. Die sich ergebende Ziffernfolge wird umgekehrt und in einem Wort umgewandelt.
+Falls alle gefunden Knoten die Häufigkeit (n=0) haben, ist kein Wort gefunden, die die Ziffernfolge entspricht.
+
+\section{Wortbildung und Interpretation}
+Das Wörterbuch ist in der Lage, Wörter als explizite Ziffernfolgen als Buchstaben in Großschreibung zu interpretieren.
+Für diese Umwandlung von Ziffern zu Buchstaben sind if-else-Abzweigung nötig. Diese Unterscheiden dann die Ziffernfolgen voneinander.
+Um festzustellen, dass die Eingaben der Nutzer auf der Konsole stimmig mit der Anforderungen sind, werden sie in der Konsole zuerst von Punkten oder Leertasten am Ende gefiltert und nach Richtigkeit gecheckt. 

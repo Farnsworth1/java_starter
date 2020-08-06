@@ -1,0 +1,54 @@
+%!TEX root = ./main.tex
+%
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <https://hci.rwth-aachen.de/karrer_thesistemplate>.
+
+\chapter{Benutzeranleitung}
+
+\section{Verzeichnisstuktur}
+
+\begin{itemize}
+    \item README.md ist die Readme-Datei für das Projekt
+    \item \texttt{src} : In diesem Verzeichnis befinden sich alle Testklassen, sowie der Quellcode des Programms
+    \item \texttt{out}: In diesem Verzeichnis befinden sich alle kompilierten Java Dateien
+    \item \texttt{doc} : In diesem Verzeichnis befindet sich die Programm-Dokumentation
+    \begin{itemize}
+        \item \texttt{javadoc}: In diesem Verzeichnis liegt die generierte Entwicklerdokumentation
+        \item \texttt{documentation}: In diesem Verzeichnis liegen die Latex-Dateien zur Erzeugung dieser Dokumentation
+        \item \texttt{Dokumentation.pdf}: Dieses Dokument
+    \end{itemize}
+    \item \texttt{tests}: In diesem Verzeichnis befinden sich Beispiele für die Eingabe-, Ausgabe und Fehlerdateien
+    \begin{itemize}
+        \item \texttt{ihk} für Beispiele aus der Aufgabenstellung
+        \item \texttt{itests} für selbst ausgesuchte Beispiele 
+    \end{itemize}
+\end{itemize}
+
+\section{Systemanforderungen}
+
+Die Software ist unter Java JRE 11 (Java Runtime Environment Version 11) ausführbar. Dafür muss die genannte Java-Version oder höher auf der Maschine installiert sein. Außerdem sollte beachtet werden, dass Java nicht abwährtskompatibel ist und entsprechend keine ältere Version verwendet werden sollte.\\
+Das Programm wurde wie im Kapitel \ref{chap:Env} beschrieben entwickelt.\\
+Die Ausführbarkeit wird unter dem genannten Voraussetzungen garantiert.\\
+Zudem kann das Programm unter Linux/Unix mit oben gennanten Vorausetzungen (Java-Version) ausgeführt werden.
+
+
+
+\section{Benutzung der Kommandozeile unter Windows}
+
+
+Mit Hilfe der Kommandozeile (Eingabeaufforderung unter Windows bzw. Shell unter Linux/Unix) müssen Sie in das Verzeichnis \texttt{\texttildelow \textbackslash out\textbackslash artifacts\textbackslash makeUpper\textunderscore jar\textbackslash}. 
+Das Programm wird wie folgt gestartet: 
+
+Beispielaufruf: \texttt{java -jar T9.jar} falls das Programm in Kommandozeile-Modus aufgerufen werden sollte
+
+Beispielaufruf: \texttt{java -jar T9.jar -i testfall.txt} falls das Programm mit einer Eingabedatei testfall.txt ausgeführt werden sollte.
+
+
+\section{Die Ausführung der Testfälle}
+Je nach Betriebssystem liegt ein Bash- oder Shell-Script zur Verfügung, um die Testfälle im Verzeichnis \textit{tests} automatisiert auszuführen.
+
+
+Die Dateien (run\textunderscore tests.bat bzw. run\textunderscore test.sh) führen die oben genannten Befehle automatisiert mit allen Testfällen im Verzeichnis \texttt{tests} aus. Dabei muss die Pfadeingabe zur .jar-Datei und der zur Testdatei(en) korrekt sein. 
+Für nähere Informationen zu Testfällen siehe Kapitel  \ref{chap:Testing}

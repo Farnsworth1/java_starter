@@ -1,0 +1,200 @@
+%!TEX root = ./main.tex
+%
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <http://www.media.informatik.rwth-aachen.de/karrer.html>.
+
+\documentclass[11pt, a4paper, titlepage]{book}
+\usepackage[ngerman]{babel}
+\usepackage{pdfpages}   % This is your set screw
+
+% ! ACHTUNG !
+% Nach dem ersten LaTeX durchlauf auf der Kommandozeile
+% makeindex -s main.ist main.idx
+% ausf�hren, sonst wird der Index nicht so sch�n formatiert.
+% Leider macht TeXShop den makeindex Aufruf nur ohne Parameter.
+
+% !ATTENTION!
+% After running LaTeX for the first time using this template call
+% makeindex -s main.ist main.idx
+% to get the correct formatting for the index.
+
+%Pakete und eigene Befehle - am besten durchlesen!
+%Includes all neccessary packets and contains some useful commands - read this file!
+\include{i10preamble}
+
+
+%--------------------------------------------------------------
+%Dokumentspezifisches
+%Stuff regarding your specific document
+%--------------------------------------------------------------
+
+%Trennungshilfen
+%Hyphenation patterns
+\hyphenation{
+dieseswortwirdnichtgetrennt
+diesesauchnicht
+thiswordwillstayinoneline
+thistoo
+}
+%--------------------------------------------------------------
+% for making node trees
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+  arn_r/.style = {treenode, circle, red, draw=red, 
+    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+  arn_x/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+}
+
+%--------------------------------------------------------------
+\usepackage{float}
+%--------------------------------------------------------------
+% for structogramms
+\usepackage[pict2e,german]{struktex}
+%--------------------------------------------------------------
+\begin{document}
+
+% gr��ere Wortabst�nde zulassen, um Trennungen zu vermeiden
+% allow more flexible whitespaces to avoid hyphenation and overfull hboxes
+\sloppy
+
+% "see" Eintr�ge f�r den Index
+% 'see'-entries for the index
+\include{indexAddOn}
+
+%--------------------------------------------------------------
+\frontmatter
+
+%Die Titelseite aus dem "images"-Verzeichnis wird verwendet
+%use the titlepage from the 'images' directory 
+%\begin{titlepage}
+%\AddToShipoutPicture*{
+%\put(0,0){
+%\includegraphics[width=\paperwidth]{extern/titlepage_04.pdf}}}
+%\strut
+%\end{titlepage}
+\title{
+  \Large Abschlussprüfung Sommer 2019 zum\\\textbf{Mathematisch- technische/r Softwareentwickler/in (IHK)}\\ [2.0cm]
+    \Large Entwicklung eines Softwaresystems\\ [2.5cm]
+	\hrule
+	\LARGE \textbf{\uppercase{Vereinfachte Texteingabe am Handy}} \\ [1.0cm]
+	\hrule
+	\normalsize \today \vspace*{0.5\baselineskip}
+}
+\date{}
+\author{
+  Maher Albezem \\ \\
+  \begin{tabular}{l l@{}l l}
+   Prüflingsnummer &:&& XXXXX \\
+   Programmiersprache &:&& Java \\
+   Ausbildungsbetrieb &:&& SLA RWTH Aachen\\
+  \end{tabular} \\ \\
+}
+
+%\pdfbookmark[0]{Titelseite}{Titelseite}
+\maketitle
+%\includepdf[pages=-]{extern/ba_coverpage.pdf}
+
+%\let\cleardoublepage\clearpage
+%\setcounter{page}{0}
+%Die oathstatement aus dem "extern"-Verzeichnis wird verwendet
+\include{oathstatement}
+\pdfbookmark[1]{Eidesstattliche Erklärung}{Eidesstattliche Erklärung}
+%\phantomsection
+%\addcontentsline{toc}{chapter}{\protect\numberline{}Eidesstattliche Erklärung}
+%\includepdf[pages=-]{extern/oathstatement.pdf}
+
+%\pdfbookmark{\contentsname}{Inhaltsverzeichnis}
+%\setcounter{page}{1}
+\makeatletter
+\pdfbookmark{\contentsname}{Inhaltsverzeichnis}
+\makeatother
+\tableofcontents
+
+\clearpage
+\begingroup %No page break after \listoffigures
+   \let\cleardoublepage\relax  % book
+   \let\clearpage\relax        % report
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\protect\numberline{}Abbildungsverzeichnis}
+    \listoffigures
+\endgroup
+
+%Die �bersicht sollte in englischer und in deutscher Sprache verfasst werden
+%the abstract should include an english and a german version
+%\include{abstract}
+
+%--------------------------------------------------------------
+
+%In der Arbeit verwendete Konventionen (Formelsatz, Definitionen, etc.)
+%conventions applied in the thesis (AE/BE, definitions, etc.)
+%\include{conventions}
+
+%--------------------------------------------------------------
+\mainmatter
+
+\include{chapter/01}  	%% Analyse
+
+\include{chapter/02}	%% Verfahrensbeschreibung
+
+\include{chapter/03}	%% Konzept
+
+\include{chapter/04}	%% Entwicklungsumgebung
+
+\include{chapter/05}	%% Benutzeranleitung
+
+\include{chapter/06} 	%% Testdiskussion
+
+\include{chapter/07}	%% Abweichung von Konzeptionsphase
+
+\include{chapter/08}	%% Zusammenfassung und Ausblick
+
+%\include{chapter/09}
+\begin{appendix}
+\include{appendix/01}
+
+%\include{literatur}
+
+\end{appendix}
+\bibliography{literatur}
+
+%--------------------------------------------------------------
+\iffalse
+\backmatter
+\begingroup %No page break after \listoffigures
+   \let\cleardoublepage\relax  % book
+   \let\clearpage\relax        % report
+    %Bibliographie
+    %bibliography
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\protect\numberline{}Literaturverzeichnis}
+    \bibliography{thesis}
+    %Index
+    %index
+    \markboth{Index}{Index}
+    \thispagestyle{plain}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+    \printindex
+\endgroup
+
+
+%Satzdatum
+%date of typesetting
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\hspace*{\fill}{\tiny Typeset \today}
+\fi
+%--------------------------------------------------------------
+\end{document}
+

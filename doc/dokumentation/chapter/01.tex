@@ -1,0 +1,119 @@
+%!TEX root = ./main.tex
+%
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <https://hci.rwth-aachen.de/karrer_thesistemplate>.
+
+\chapter{Aufgabenanalyse}
+
+In diesem Abschnitt widergebe ich die Aufgabenstellung in eigenen Worten. Nachher folgt eine genaue Analyse des angeforderten Algorithmus sowie die Restriktionen.
+
+Im Rahmen der Aufgabenstellung ist ein Programm zur vereinfachten Texteingabe mit Hilfe einer numerischen Tastatur zu entwickeln. Eine Software, die dieses Problem löst, ist unter dem Namen T9 bekannt. Die Tastatur verfügt nur über folgende Tasten: 1234567890*\# . Die möglichen Eingaben des Programms "T9" sind 12 unterschiedliche Buchstaben in der Menge $E:=\{1,2,...,9,0,*,\# ,Enter\}$. Die Enter-Taste wird in allen Konsolenprogrammen benötigt, um Eingaben zu bestätigen.
+
+Mit der Menge E sollen Wörter bzw. Sätze in Großbuchstaben geschrieben und mit Hilfe eines Wörterbuchs erkannt werden.
+Die Zuordnung der Buchstabe nzu den numerischen Taste ist wie folgt festgelegt:
+\newline
+\begin{table}[h!]
+\begin{tabular}{ccc}
+$\sqcup$ & ABC & DEF  \\
+1        & 2   & 3    \\
+GHI      & JKL & MNO  \\
+4        & 5   & 6    \\
+PQRS     & TUV & WXYZ \\
+7        & 8   & 9    \\
+\textit{Ja}       & .   & \textit{NEIN} \\
+*        & 0   & \#  
+\end{tabular}
+\end{table}
+\newline
+Das Programm kann dynamisch erweitert werden, indem man Wörter zum Wörterbuch hinzufügt.
+
+\section{Algorithmus}
+\label{algorithmus}
+
+Bei der Eingabe wird zwischen zwei Modies unterschieden: Einfachmodus und Explizitmodus. Die beiden Modus unterscheiden sich in der Interpretation der Eingabemenge E.
+Das Programm bildet beliebig viele Sätze mit Einschränkung der möglichen Eingaben (s. Restriktionen).
+Alle Einträge im Wörterbuch, die nur per Explizitmodus gespeichert worden sind, werden Extern in einer Textdatei gespeichert und bei jedem erneuten Ausführen des Programms wieder Aufgerufen und für Textsuche verwendet.
+
+\subsection{Modus der normalen Texteingabe}
+\label{normal}
+
+Für die Texteingabe wird pro Buchstabe nur eine Zifferntaste gedrückt.
+
+Beispieleingabe:
+\begin{table}[h!]
+\begin{tabular}{lllllllll}
+S & O & F & T & W & A & R & E & $\sqcup$ \\
+7 & 6 & 3 & 8 & 9 & 2 & 7 & 1 & 1
+\end{tabular}
+\end{table}
+\newline
+Beim Eingeben der Leertaste 1 oder der Punkt 0 wird Ende des Wortes bzw. des Satzes signalisiert.
+Das Wort wird anhand der Ziffernfolge im Wörterbuch gesucht.
+Falls mehrere Wörter die gleiche Ziffernfolge haben, wird das Häufigste Wort vorgeschlagen.
+Falls kein Eintrag im Wörterbuch gefunden wurde, wird der Nuzter zum Explizitmodus weitergeleitet.
+
+\subsection{Explizitmodus}
+\label{explizit}
+
+Im Explizitmodus wird keine Suche im Wörterbuch stattfinden. Der Nuzter wird stattdessen aufgefordert, Wörter zum Speichern im Wörterbuch einzugeben.
+Die Eingabe wird explizit erfolgen. D.h. die genauen Buchstaben werden eingegeben.
+
+Beispieleingabe:
+\newline
+\begin{table}[h!]
+\begin{tabular}{lllll}
+W  & O  & R  & T  & $\sqcup$ \\
+91 & 63 & 73 & 81 & 1       
+\end{tabular}
+\end{table}
+
+Hier signalisieren auch Leertaste 1 oder Punkt 0 Ende des Wortes bzw. des Satzes.
+Für jede Buchstabe werden zwei Ziffern benötigt. Eine für Ort im Ziffernblock und die Zweite für den Ort innerhalb der gewählten Ziffernblock.
+
+\subsection{Wörter und Sätze}
+Das Programm unterscheidet zwischen Wörter und Sätze. Falls die Eingabe mit einem Punkt(0) endet wird Ende des Satzes signalisiert und im Anschluss das ganze Satz gezeigt.
+Falls die Eingabe mit einer Leertaste(1) endet wird Ende des Wortes signalisiert und im Anschluss weiergeschrieben bis Ende des Satzes eingegben wird.
+
+
+\subsection{das Wörterbuch}
+\label{dic}
+Alle Einträge des Wörterbuchs werden in einer HashMap sowie einer Baumstruktur gespeichert. Der Schlüssel der jeweiligen Einträge ist der explizite Zifferncode aus der Menge \{2, 3, 4, 5, 6, 7, 8, 9\} Wobei Leertast (0) oder Punkt(0) nicht gespeichert werden.
+Somit sind die Einträge im Wörterbuch eineindeutig abgebildet und somit einfach zu finden.
+Am Anfang bzw. am Ende des Programmablaufs wird das Wörterbuch in eine Textdatei gespeichert bzw. gelesen.
+Beim speichern werden alle Einträge des Wörterbuchs Zeilenweise in der Textdatei geschrieben.
+Eine Zeile hat folgendes Muster: \textless Code\textgreater \textless Wort\textgreater \textless Häufigkeit\textgreater 
+\newline
+Beispile: 91637333 WORF 2
+
+\subsection{Benutzerdialog im Hauptprogramm}
+Die Benutzereingabe bzw. Ausgabe erfolgt mit einer Konsole. Die Taste Enter beendet die Eingabe.
+
+\textbf{Falls ein Satz nur mit einem Punkt eingegeben wurde, wird das Programm beendet.}
+
+\section{Restriktionen}
+
+\subsection{Restriktionen der Eingabedatei}
+Eine Textdatei enthält Zeilenweise gespeicherte Einträge vom Wörterbuch.
+Solche Textdatei muss folgende Restriktionen erfüllen:
+\begin{itemize}
+    \item Die Eingabedatei muss existieren und lesbar sein, sonst wird kein Wörterbuch geladen.
+    \item Die Eingabedatei soll in Form einer Textdatei mit lebarer ASCII-Text sein.
+    \item Pro Eintrag des Wörterbuchs wird eine Zeile in der Textdatei gespeichert und durch Zeilenvorschub getrennt.
+    \item Das Muster Pro Eintrag muss wie im Abschnitt 1.1.4 (\nameref{dic}) beschrieben übereinstimmen
+    \item Die Eingabedatei darf keine doppelte Einträge enthalten
+    \item Die Textdatei muss mit einem normalen Texteditor bearbeitbar sein.
+    \item Die Ziffernfolge für jeden Eintrag muss mit der Menge der möglichen Eingaben im Benutzerdialog enthalten sein.
+\end{itemize}
+
+Falls die Eingabedatei nicht konform mit der oben genannten Punkten, wird die Datei nicht geladen.
+Andernfalls wird die im Programm angegebene Textdatei geladen.
+
+\subsection{Restriktionen der Benutzereingabe}
+Wie oben in den Abschnitten \textbf{\nameref{normal}} und \textbf{\nameref{explizit}} angegeben haben die Konsoleneingaben folgende Restriktionen:
+\begin{itemize}
+    \item Alle Eingaben sind nur aus der Menge $E:=\{1,2,...,9,0,*,\# ,Enter\}$
+    \item Eine Explizite Ziffernfolge muss konform mit der vorgeschriebenen Zuordnung der Tastatur in der Aufgabenanalyse
+    \item Kein Wort sollte aus nur einer Leertaste (1) oder nur einem Punkt (0) bestehen
+\end{itemize}

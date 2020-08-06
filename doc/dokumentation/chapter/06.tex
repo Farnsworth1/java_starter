@@ -1,0 +1,159 @@
+%!TEX root = ./main.tex
+%
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <https://hci.rwth-aachen.de/karrer_thesistemplate>.
+
+\chapter{Testfälle und Diskussion}
+\label{chap:Testing}
+\section{Konvention}
+Die Testfälle sind unterteilt in IHK-Beispliele und selbst erstellte Tests. Die Testdateien haben folgende Benennung: Die Bezeichnung [0-9] steht für eine Zahl aus dem Bereich von 0 bis 9
+\begin{itemize}
+\item  E[0-9][0-9][0-9].txt für\textbf{ Eingabedateien}
+\item  E[0-9][0-9][0-9].output.txt für\textbf{ Ausgabedateien}
+\item  E[0-9][0-9][0-9].error.txt für\textbf{ Fehlerdateien}
+\end{itemize}
+Es wird grundsätzlich immer zu jeder Eingabedatei eine Ausgabe- und Fehlerdatei erzeugt.
+Hat das Programm keine Fehler bzw. keine Ausgabe erzeugt, sind die Dateien \textbf{leer}.
+Beispielsweise erzeugt die Eingabedate E001.txt nach meiner Konvention die Ausgabedatei E001.output.txt und die Fehlerdatei E001.error.txt.
+
+
+\section{IHK-Beispiele}
+Nachfolgend sind die Beispieler von der IHK-Aufgabenstellung mit aufgelistet. Aus den Kommentaren in der Eingabedateien ist eine genauere Beschreibung zu sehen.
+%Im ersten Beispiel wurde das Programm mit einem leeren Wörterbuch geöffnet und die Wörter FES, DER, EIN, IST, HUT im Wörterbuch gespeichert. Mit diesem ersten Beispiel wird die Konsoleeingabe, die Unterscheidung zwischen Sätze und Wörter, die Suche im Wörterbuch, die Beendung des Programms sowie die Speicherung in einer Textdatei getestet.
+%Im zweiten Beispiel wird das Wörterbuch aus der vorigen Beispiel geladen und anschließend erweitert. 
+%Im dritten Beispiel wird getestet, ob zwei Wörter mit der gleichen einfachen Zifferncode richtig im Wörterbuch gesucht werden.\\\\
+
+
+%\verbfilenobox[\mbox{\scriptsize\theVerbboxLineNo:} ]{../../tests/E001.txt}
+\begin{itemize}
+\item \textbf{Testfall1}: Kein Randwert und kein Sonderfall.
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E001.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E001.output.txt}
+Fehler: Leer
+
+\item \textbf{Testfall2}: einzelne Großbuchstabe
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E002.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E002.output.txt}
+Fehler: Leer
+
+\item \textbf{Testfall 11}: einzelne Sonderzeichen
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E011.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E011.output.txt}
+Fehler:\VerbatimInput[frame=single, numbers=left]{../../tests/E011.error.txt}
+
+\end{itemize}
+
+\cite{UML}
+\cite{SWT}
+
+%
+%\lstinputlisting[language={}, caption=Ausgabe zu E001]{../../tests/E001.output.txt}
+%\lstinputlisting[language={}, caption=Error log zu E001]{../../tests/E001.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E002.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E002.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E002.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E003.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E003.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E003.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E004.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E004.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E004.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E005.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E005.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E005.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E006.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E006.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E006.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E007.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E007.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E007.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E008.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E008.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E008.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E009.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E009.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E009.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E010.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E010.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E010.error.txt}
+%
+%\lstinputlisting[language={}, caption=Eingabe]{../../tests/E011.txt}
+%\lstinputlisting[language={}, caption=Ausgabe]{../../tests/E011.output.txt}
+%\lstinputlisting[language={}, caption=Error log]{../../tests/E011.error.txt}
+
+\clearpage
+
+\section{Eigene Beispiele}
+
+\subsection{Äquivalenzklassen}
+Nachfolgend sind Testbeispiele aufgelistet, die das Programm weitestgehend funktional testen. Dabei werden die Äquivalenzklassen behandelt, die ich mir in der Konzeptionsphase ausgedacht habe. In Tabelle \ref{tab:tests} sind die Äquivalenzklassen in zulässige und unzulässige Mengen unterteilt. Liegt ein Representant in der unzulässigen Menge, sollte das Programm einen entsprechenden Fehler ausgeben. 
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Name & Zulässige  Bereich & Unzulässige Bereich & Repräsentant \\ \hline
+   Buchstaben  &  \{A-Z,a-z,0-9\}                  &     Sonderzeichen                &  Ä            \\ \hline
+    Sätze &                    &                    &              \\ \hline
+\end{tabular}
+\caption{Tabelle mit den Äquivalenzklassen}
+\label{tab:tests}
+\end{table}
+
+
+\subsection{Beispiele}
+\begin{itemize}
+\item \textbf{Testfall1}: Kein Randwert und kein Sonderfall.
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E001.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E001.output.txt}
+Fehler: Leer
+
+\item \textbf{Testfall2}: einzelne Großbuchstabe
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E002.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E002.output.txt}
+Fehler: Leer
+
+\item \textbf{Testfall 11}: einzelne Sonderzeichen
+Eingabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E011.txt}
+Ausgabe: \VerbatimInput[frame=single, numbers=left]{../../tests/E011.output.txt}
+Fehler:\VerbatimInput[frame=single, numbers=left]{../../tests/E011.error.txt}
+
+\end{itemize}
+
+
+%Ich habe folgende Beispiele als JUnit-Testklassen ausgedacht:
+%\begin{enumerate}
+%    \item Ein Wörterbuch laden, das nicht im Verzeichnis existiert
+%    \item Ein Wörterbuch laden, das mehr als ein Eintrag in einer Zeile enthält. Hier wird der Zeilenvorschub getestet
+%    \item Ein Wörterbuch mit zu langer Codewort
+%    \item Ein Wörterbuch mit Wort in Kleinschreibung oder aus Buchstaben
+%    \item Ein Wörterbuch mit Übereinstimmung von Code und Wort
+%    \item Ein Wörterbuch mit doppelten Einträgen
+%    \item Ein Wörterbuch, das zwar leer ist aber Zeilenvorschub enthält
+%    \item Ein Wörterbuch, das die korrekten Einbaben hat.
+%    \item Ein zu großes Wörterbuch
+%    \item Das Programm hat keine Textdatei zum Speichern sondern andere Extension
+%    \item Das Programm bekommt einen neuen Namen einer Textdatei zum Speichern
+%    \item \texttt{testbib1.text} enthält ein Beispiel aus dem Baum im Abschnitt 2. Der nach dem Laden entstandene Baum wird weist eine Struktur, die eindeutig Ziffernwörter abblidet. Dies wird mit den zwie Wörtern \textbf{ZNRF} und \textbf{WORF} getestet. Außerdem hat ZNRF die Häufigkeit 2 und WORF die Häufigkeit 1. Somit sollte ZRNF gewählt werden. In \texttt{textbib2.text} sollte WORF gewählt werden, da sie Häufigkeit 2 hat und ZRNF Häufigkeit 1 hat.
+%    In diesem Baum wird auch getestet, ob die Nachbarknoten verglichen werden. Für die suche nach \textbf{ZO} sollte nicht \textbf{ZN} rauskommen.
+%\end{enumerate}
+%
+%\lstinputlisting[language={}, caption=Testbeispiel 2 - Wörterbuch]{testfaelle/falsebib1.text}
+%\lstinputlisting[language={}, caption=Testbeispiel 3 - Wörterbuch]{testfaelle/falsebib3.text}
+%\lstinputlisting[language={}, caption=Testbeispiel 4 - Wörterbuch]{testfaelle/falsebib4.text}
+%\lstinputlisting[language={}, caption=Testbeispiel 5 - Wörterbuch]{testfaelle/falsebib5.text}
+%\lstinputlisting[language={}, caption=Testbeispiel 6 - Wörterbuch]{testfaelle/falsebib6.text}
+%\lstinputlisting[language={}, caption=Testbeispiel 8 - Wörterbuch]{testfaelle/truebib.text}
+%\lstinputlisting[language={}, caption=Testbaum 1 - Baum]{testfaelle/testbib1.text}
+%\lstinputlisting[language={}, caption=Testbaum 2 - Baum]{testfaelle/testbib2.text}
+%\lstinputlisting[language=java, caption=Klasse \texttt{WoerterbuchTest}]{sourcecode/WoerterbuchTest.java}
